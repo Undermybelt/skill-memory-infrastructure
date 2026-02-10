@@ -1,0 +1,41 @@
+{
+  "name": "memory-infrastructure",
+  "version": "1.0.0",
+  "description": "Three-layer memory + qmd semantic search for OpenClaw. Never forget.",
+  "commands": [
+    {
+      "name": "init",
+      "description": "Initialize memory infrastructure (create cron jobs)",
+      "handler": "src/init.js"
+    },
+    {
+      "name": "run",
+      "description": "Manually run a memory layer (all|daily|weekly|hourly)",
+      "handler": "src/run.js",
+      "args": [
+        { "name": "layer", "type": "string", "required": true, "choices": ["all", "daily", "weekly", "hourly"] }
+      ]
+    },
+    {
+      "name": "status",
+      "description": "Show memory infrastructure status",
+      "handler": "src/status.js"
+    },
+    {
+      "name": "configure",
+      "description": "Configure cron schedules and qmd settings",
+      "handler": "src/configure.js"
+    }
+  ],
+  "dependencies": {
+    "qmd": "*"
+  },
+  "permissions": [
+    "cron:add",
+    "cron:list",
+    "cron:remove",
+    "file:write",
+    "file:read",
+    "exec:run"
+  ]
+}
